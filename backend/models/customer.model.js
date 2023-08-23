@@ -8,6 +8,6 @@ const CustomerSchema=mongoose.Schema({
 
 const CustomerModel=mongoose.model("customer",CustomerSchema)
 
-module.exports={    
+module.exports={
     CustomerModel
 }
