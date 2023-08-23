@@ -10,23 +10,6 @@ const OrderSchema = new mongoose.Schema({
     isDelivered: { type: Boolean, default: false }
 });
 
-OrderSchema.pre('save', async function (next) {
-    if (!this.orderNumber) {
-        const latestOrder = await this.constructor.findOne({}, 'orderNumber', { sort: { orderNumber: -1 } });
-
-        if (latestOrder) {
-           
-            const latestOrderNumber = parseInt(latestOrder.orderNumber, 10);
-            const newOrderNumber = (latestOrderNumber + 1).toString().padStart(4, '0');
-            this.orderNumber = newOrderNumber;
-        } else {
-           
-            this.orderNumber = '0001';
-        }
-    }
-
-    next();
-});
 
 const OrderModel = mongoose.model('Order', OrderSchema);
 
