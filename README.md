@@ -64,7 +64,4 @@ Copy code
   "image": "vehicle_image_url_here",
   "activeOrdersCount": 0
 }
-How to Use
-Start by accessing the frontend at https://syook-assignment-frontend.vercel.app/.
-Interact with the user interface to perform various actions.
-The frontend will communicate with the backend through the API routes mentioned above.
+
