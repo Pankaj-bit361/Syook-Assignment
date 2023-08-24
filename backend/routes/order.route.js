@@ -19,7 +19,7 @@ OrderRouter.post("/",async(req,res)=>{
 let findoutcity=await VehModel.findOne({city})
 
 if(findoutcity){
-if(findoutcity.activeOrdersCount>=10){
+if(findoutcity.activeOrdersCount>=2){
     res.send(`sorry our logistic for this city is already fully packed`)
 }else{
 

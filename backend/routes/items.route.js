@@ -18,7 +18,7 @@ ItemRouter.post("/",async(req,res)=>{
     try {
         let newItem=new ItemModel(req.body)
         await newItem.save()
-        res.send("item added successfully")
+        res.send({msg:"item added successfully",data:newItem})
     } catch (error) {
         res.send({err:error.message})
     }

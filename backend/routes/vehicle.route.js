@@ -26,7 +26,7 @@ VehicleRouter.post("/",async(req,res)=>{
         }else{
             let newItem=new VehModel(req.body)
             await newItem.save()
-            res.send("item added successfully")
+            res.send("vehicle added successfully")
         }
        
     } catch (error) {
