@@ -48,7 +48,7 @@ json
 Copy code
 {
   "item": "Product Name",
-  "price": 29.99
+  "price": 30.00
 }
 Vehicle Routes
 URL: https://syook-assignment-backend.vercel.app/vehicle
