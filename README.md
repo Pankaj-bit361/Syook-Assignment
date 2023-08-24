@@ -48,7 +48,7 @@ json
 Copy code
 {
   "item": "Product Name",
-  "price": 30.00
+  "price": 29.99
 }
 Vehicle Routes
 URL: https://syook-assignment-backend.vercel.app/vehicle
@@ -68,9 +68,3 @@ How to Use
 Start by accessing the frontend at https://syook-assignment-frontend.vercel.app/.
 Interact with the user interface to perform various actions.
 The frontend will communicate with the backend through the API routes mentioned above.
-Use the provided backend route URLs for specific functionalities, such as orders, customers, items, and vehicles.
-Additional Information
-For more details about how to use the API routes and their specific functionalities, refer to the source code or any provided API documentation.
-
-Support
-If you encounter any issues or need assistance, please feel free to contact our support team at pnkjvshsht1@gmail.com.
