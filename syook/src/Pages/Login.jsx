@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Box, Button, Flex, Input, Text } from '@chakra-ui/react'
 import axios from 'axios'
+import { LoginContext } from '../LoginContext/LoginContextProvider'
+import { useNavigate } from 'react-router-dom'
 
 const init={
     "email":"",
@@ -10,6 +12,10 @@ const init={
 const Login = () => {
 
 const [state,setState]=useState(init)    
+const {setLoginData}=useContext(LoginContext)
+const navigate=useNavigate()
+
+
 
 const handleChange=(e)=>{
     const {name,value}=e.target   
@@ -24,6 +30,8 @@ const handleSubmit=(e)=>{
         console.log(res.data)
         localStorage.setItem("log",JSON.stringify(res.data.already))
         localStorage.setItem("token",JSON.stringify(res.data.token))
+        setLoginData(res.data.already)
+        navigate(`/`)
     })
 
 

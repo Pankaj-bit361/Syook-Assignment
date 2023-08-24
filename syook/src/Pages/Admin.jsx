@@ -3,6 +3,7 @@ import { Box, Button, Modal,Text, ModalBody, ModalCloseButton, ModalContent, Mod
 import React, { useEffect, useState } from 'react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import  axios from "axios"
+import Swal from 'sweetalert2';
 
 const init={
   registrationNumber:"",
@@ -56,7 +57,25 @@ getData()
      console.log(state)
     axios.post(`http://localhost:8080/vehicle`,state)
     .then((res)=>{
-      console.log(res.data)
+if(res.data=="vehicle added successfully"){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: res.data,
+    showConfirmButton: false,
+    timer: 1500
+  })
+  getData()
+}else{
+  Swal.fire({
+    icon: 'error',
+    title: res.data,
+    text: 'Something went wrong!',
+    footer: '<a href="">Why do I have this issue?</a>'
+  })
+}
+     
+      
     })
     setState(init)
 
@@ -95,7 +114,7 @@ getData()
            <Input mt="2%" name="image" placeholder='please enter image'  onChange={handleVehicle}/>
            <Input mt="2%" name="city" placeholder='please enter city'  onChange={handleVehicle}/>
 
-           <Button mt="2%" type='submit' w="40%" ml="30%" color={"white"} bg="blackAlpha.900" >Create</Button>
+           <Button mt="2%" type='submit' w="40%" ml="30%" color={"white"} bg="blackAlpha.900" onClick={onClose} >Create</Button>
            
            </form>
           </ModalBody>
@@ -132,84 +151,10 @@ getData()
                 City: {item.city}
               </Text>
               <Text fontWeight="500">activeOrdersCount: {item.activeOrdersCount}</Text>
-            <Flex w="18%" justifyContent="flex-end">
-              <IconButton
-                colorScheme="red"
-                aria-label="Delete"
-                icon={<DeleteIcon />}
-                onClick={() => handleDelete(item._id)}
-                mr="0.5rem"
-              />
-              <IconButton
-                colorScheme="blue"
-                aria-label="Edit"
-                onClick={() => handleOpenModalEdit(item)}
-                icon={<EditIcon />}
-              />
-            </Flex>
+          
           </Flex>
 
-          {/* <Modal
-            initialFocusRef={initialRef}
-            isOpen={isOpenEdit}
-            onClose={handleCloseModalEdit}
-            bg="grey"
-          >
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Edit Item</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody pb={6}>
-                <FormControl mt={4}>
-                  <FormLabel>Product Image</FormLabel>
-                  <Input
-                    name="Img"
-                    value={data1.Img}
-                    onChange={handleChange1}
-                  />
-                </FormControl>
-
-                <FormControl mt={4}>
-                  <FormLabel>Product Name</FormLabel>
-                  <Input
-                    name="Name"
-                    value={data1.Name}
-                    onChange={handleChange1}
-                  />
-                </FormControl>
-
-                <FormControl mt={4}>
-                  <FormLabel>Product Price</FormLabel>
-                  <Input
-                    name="Price"
-                    value={data1.Price}
-                    onChange={handleChange1}
-                  />
-                </FormControl>
-
-                <FormControl mt={4}>
-                  <FormLabel>Product Quantity</FormLabel>
-                  <Input
-                    name="Quantity"
-                    value={data1.Quantity}
-                    onChange={handleChange1}
-                  />
-                </FormControl>
-              </ModalBody>
-
-              <ModalFooter>
-                <Button
-                  colorScheme="blue"
-                  mr={3}
-                  type="submit"
-                  onClick={(e) => handlesubmit1(e,item._id)}
-                >
-                  Save
-                </Button>
-                <Button onClick={handleCloseModalEdit}>Cancel</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal> */}
+       
         </Card>
       ))}
     </Grid>
