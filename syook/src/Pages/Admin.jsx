@@ -20,7 +20,7 @@ const Admin = () => {
 
 
 const getData=()=>{
-  axios.get(`http://localhost:8080/vehicle`)
+  axios.get(`https://syook-assignment-backend.vercel.app/vehicle`)
   .then((res)=>{
     setdata(res.data)
   })
@@ -55,7 +55,7 @@ getData()
     const handleSubmit=(e)=>{
       e.preventDefault()
      console.log(state)
-    axios.post(`http://localhost:8080/vehicle`,state)
+    axios.post(`https://syook-assignment-backend.vercel.app/vehicle`,state)
     .then((res)=>{
 if(res.data=="vehicle added successfully"){
   Swal.fire({

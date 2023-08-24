@@ -25,7 +25,7 @@ const handleChange=(e)=>{
 const handleSubmit=(e)=>{
     e.preventDefault()
  
-    axios.post(`http://localhost:8080/customer/login`,state)
+    axios.post(`https://syook-assignment-backend.vercel.app/customer/login`,state)
     .then((res)=>{
         console.log(res.data)
         localStorage.setItem("log",JSON.stringify(res.data.already))

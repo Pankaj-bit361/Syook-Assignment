@@ -10,7 +10,7 @@ const [state,setState]=useState([])
 
 
 const getData=()=>{
-  axios.get(`http://localhost:8080/vehicle`)
+  axios.get(`https://syook-assignment-backend.vercel.app/vehicle`)
   .then((res)=>{
     setState(res.data)
   })

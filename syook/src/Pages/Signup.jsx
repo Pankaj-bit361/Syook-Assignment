@@ -22,7 +22,7 @@ const handleChange=(e)=>{
 
 const handleSubmit=(e)=>{
     e.preventDefault() 
-    axios.post(`http://localhost:8080/customer/signup`,state)
+    axios.post(`https://syook-assignment-backend.vercel.app/customer/signup`,state)
     .then((res)=>{
         console.log(res.data)
     })
