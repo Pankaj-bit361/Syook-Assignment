@@ -40,17 +40,17 @@ const handleSubmit=(e)=>{
 
 
 
-axios.post(`https://syook-assignment-backend.vercel.app/item/`,order)
+axios.post(`https://syook-assignment-backend.vercel.app/item`,order)
 .then((res)=>{
 
   let data={
     customerId:loginData._id,
-    city:loginData.city,
+    city:city,
     price:order.price,
     itemId:res.data.data._id
     }
 
-axios.post(`https://syook-assignment-backend.vercel.app/order/`,data)
+axios.post(`https://syook-assignment-backend.vercel.app/order`,data)
 .then((res)=>{
 
   if(res.data=="order created successfully") {
